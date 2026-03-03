@@ -6,7 +6,7 @@ export const SignInButton = () => {
   return (
     <button
       onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-      className="flex items-center gap-3 rounded-lg bg-white px-6 py-3 text-sm font-medium text-gray-700 shadow-md transition-colors hover:bg-gray-50"
+      className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-6 py-3.5 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 hover:shadow-md"
     >
       <svg className="h-5 w-5" viewBox="0 0 24 24">
         <path
