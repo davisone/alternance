@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { jobOffers, searchProfiles, users } from "@/lib/db/schema";
 import { scrapeAll } from "@/lib/scrapers";
 import { sendNewOffersEmail } from "@/lib/email";
-import { eq, and, gte } from "drizzle-orm";
+import { eq, gte } from "drizzle-orm";
 import type { Platform } from "@/types";
 
 export const maxDuration = 60;

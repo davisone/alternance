@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { ScrapedOffer, Platform } from "../types";
+import type { ScrapedOffer } from "../types";
 
 describe("Types des scrapers", () => {
   it("doit accepter une offre scrapée valide", () => {

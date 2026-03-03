@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Instanciation lazy pour éviter l'erreur au build si la clé n'est pas définie
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 interface NewOffersEmailParams {
   to: string;
@@ -22,7 +23,7 @@ export async function sendNewOffersEmail({
     )
     .join("");
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: "Alternance Tracker <onboarding@resend.dev>",
     to,
     subject: `${offers.length} nouvelle(s) offre(s) pour "${keywords}"`,

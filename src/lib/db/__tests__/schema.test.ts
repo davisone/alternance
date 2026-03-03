@@ -1,9 +1,6 @@
 import { describe, it, expect } from "vitest";
 import {
   users,
-  accounts,
-  sessions,
-  verificationTokens,
   jobOffers,
   applications,
   favorites,
