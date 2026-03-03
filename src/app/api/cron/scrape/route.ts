@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { jobOffers, searchProfiles } from "@/lib/db/schema";
+import { jobOffers, searchProfiles, users } from "@/lib/db/schema";
 import { scrapeAll } from "@/lib/scrapers";
+import { sendNewOffersEmail } from "@/lib/email";
+import { eq, and, gte } from "drizzle-orm";
 import type { Platform } from "@/types";
 
 export const maxDuration = 60;
@@ -12,6 +14,8 @@ export async function GET(request: NextRequest) {
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
+
+  const scrapeStart = new Date();
 
   // Récupérer tous les profils de recherche actifs
   const profiles = await db.select().from(searchProfiles);
@@ -39,6 +43,7 @@ export async function GET(request: NextRequest) {
 
   let totalInserted = 0;
 
+  // Scraper et insérer les offres
   for (const search of uniqueSearches.values()) {
     const offers = await scrapeAll(
       search.keywords,
@@ -68,9 +73,49 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  // Envoyer les notifications email
+  let emailsSent = 0;
+
+  for (const profile of profiles) {
+    if (!profile.notifyEmail) continue;
+
+    // Récupérer l'utilisateur
+    const [user] = await db
+      .select()
+      .from(users)
+      .where(eq(users.id, profile.userId));
+
+    if (!user?.email) continue;
+
+    // Récupérer les offres insérées pendant ce run
+    const newOffers = await db
+      .select()
+      .from(jobOffers)
+      .where(gte(jobOffers.scrapedAt, scrapeStart));
+
+    if (newOffers.length === 0) continue;
+
+    try {
+      await sendNewOffersEmail({
+        to: user.email,
+        userName: user.name ?? "utilisateur",
+        offers: newOffers.map((o) => ({
+          title: o.title,
+          company: o.company,
+          applyUrl: o.applyUrl,
+        })),
+        keywords: profile.keywords,
+      });
+      emailsSent++;
+    } catch {
+      // Erreur d'envoi — on continue
+    }
+  }
+
   return NextResponse.json({
     success: true,
     profilesProcessed: uniqueSearches.size,
     offersInserted: totalInserted,
+    emailsSent,
   });
 }
