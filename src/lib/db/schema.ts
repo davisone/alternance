@@ -4,7 +4,6 @@ import {
   timestamp,
   uuid,
   pgEnum,
-  boolean,
   primaryKey,
   integer,
 } from "drizzle-orm/pg-core";
@@ -143,6 +142,5 @@ export const searchProfiles = pgTable("search_profiles", {
     .array()
     .default(["linkedin", "hellowork", "indeed", "wttj"])
     .notNull(),
-  notifyEmail: boolean("notify_email").default(true).notNull(),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
 });

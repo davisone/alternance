@@ -51,7 +51,6 @@ describe("Schema de base de données", () => {
     expect(columns).toContain("keywords");
     expect(columns).toContain("location");
     expect(columns).toContain("platforms");
-    expect(columns).toContain("notifyEmail");
   });
 
   it("doit exporter les enums platform et applicationStatus", () => {

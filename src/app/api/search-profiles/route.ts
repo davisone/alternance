@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const { keywords, location, platforms, notifyEmail } = await request.json();
+  const { keywords, location, platforms } = await request.json();
 
   const [created] = await db
     .insert(searchProfiles)
@@ -33,7 +33,6 @@ export async function POST(request: NextRequest) {
       keywords,
       location: location ?? null,
       platforms: platforms ?? ["linkedin", "hellowork", "indeed", "wttj"],
-      notifyEmail: notifyEmail ?? true,
     })
     .returning();
 

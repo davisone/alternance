@@ -1,5 +1,5 @@
 {
-  "id": "30acc81e-f808-4c9a-9e43-67df952c9ed7",
+  "id": "35c86247-b406-482f-a7c8-c292f6c0acb6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -384,13 +384,6 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'{\"linkedin\",\"hellowork\",\"indeed\",\"wttj\"}'"
-        },
-        "notify_email": {
-          "name": "notify_email",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
         },
         "created_at": {
           "name": "created_at",

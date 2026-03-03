@@ -49,9 +49,6 @@ export default async function SettingsPage() {
                   </span>
                 ))}
               </div>
-              <p className="mt-2 text-xs text-gray-400">
-                Notifications : {profile.notifyEmail ? "activées" : "désactivées"}
-              </p>
             </div>
           ))
         )}

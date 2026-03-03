@@ -53,7 +53,6 @@ CREATE TABLE "search_profiles" (
 	"keywords" text NOT NULL,
 	"location" text,
 	"platforms" text[] DEFAULT '{"linkedin","hellowork","indeed","wttj"}' NOT NULL,
-	"notify_email" boolean DEFAULT true NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint

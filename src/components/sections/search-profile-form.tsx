@@ -20,7 +20,6 @@ export const SearchProfileForm = () => {
     "wttj",
     "linkedin",
   ]);
-  const [notifyEmail, setNotifyEmail] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const togglePlatform = (platform: string) => {
@@ -42,7 +41,6 @@ export const SearchProfileForm = () => {
         keywords,
         location: location || null,
         platforms: selectedPlatforms,
-        notifyEmail,
       }),
     });
 
@@ -105,19 +103,6 @@ export const SearchProfileForm = () => {
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          id="notifyEmail"
-          checked={notifyEmail}
-          onChange={(e) => setNotifyEmail(e.target.checked)}
-          className="rounded border-gray-300"
-        />
-        <label htmlFor="notifyEmail" className="text-sm text-gray-700">
-          Recevoir des notifications par email
-        </label>
       </div>
 
       <button
