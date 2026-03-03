@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Indeed - alternance gestion de projet - Rennes</title>
+    <item>
+      <title>Alternant Chef de Projet Digital - Acme Corp</title>
+      <link>https://fr.indeed.com/viewjob?jk=abc123</link>
+      <description>Nous recherchons un alternant en gestion de projet digital pour rejoindre notre équipe marketing.</description>
+      <pubDate>Mon, 02 Mar 2026 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Assistant Gestion de Projet IT - TechCo</title>
+      <link>https://fr.indeed.com/viewjob?jk=def456</link>
+      <description>Poste en alternance pour un assistant gestion de projet au sein de la DSI.</description>
+      <pubDate>Sun, 01 Mar 2026 08:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
