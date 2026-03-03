@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "id": 12345,
+      "name": "Alternant Gestion de Projet",
+      "slug": "alternant-gestion-de-projet-12345",
+      "company": {
+        "name": "StartupCo"
+      },
+      "description": "Rejoignez notre équipe en tant qu'alternant en gestion de projet.",
+      "contract_type": {
+        "fr": "Alternance"
+      },
+      "office": {
+        "city": "Rennes"
+      }
+    },
+    {
+      "id": 67890,
+      "name": "Chef de Projet Junior - Alternance",
+      "slug": "chef-de-projet-junior-67890",
+      "company": {
+        "name": "BigCorp"
+      },
+      "description": "Poste en alternance pour un chef de projet junior.",
+      "contract_type": {
+        "fr": "Alternance"
+      },
+      "office": {
+        "city": "Paris"
+      }
+    }
+  ],
+  "total": 2
+}
